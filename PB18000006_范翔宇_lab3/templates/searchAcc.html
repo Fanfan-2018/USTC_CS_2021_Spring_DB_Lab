@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="cn-zh">
+<title>帐户查询</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<section class="content">
+  <header>
+    <h1 style="text-align:center;">帐户查询</h1>
+  </header>
+  <body>
+    <center>
+    <h1>账户信息列表</h1>
+    <a href="/accountManage/">返回</a>
+    <hr>
+    <form action="/searchAcc/" method="post">
+        <h1>请输入想查找的帐户的相关信息</h1>
+        <table>
+            <tr>
+                <td>账户号:</td>
+                <td><input type="text" name="accountID"><br></td>
+            </tr>
+            <tr>
+                <td>开户银行:</td>
+                <td><select name="bank">
+                    <option value="">all</option>
+                    <option value ="Beijing branch">Beijing branch</option>
+                    <option value ="Shanghai branch">Shanghai branch</option>
+                    <option value="Hefei branch">Hefei branch</option>
+                </select><br></td>
+            </tr>
+            <tr>
+                <td>客户:</td>
+                <td><input type="text" name="cusID"><br></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" ,value="查询"></td>
+            </tr>
+        </table>
+    </form>
+    <h2>储蓄账户信息列表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>操作</th>
+            <th>账户号(6位)</th>
+            <th>余额</th>
+            <th>开户日期</th>
+            <th>账户类型</th>
+            <th>开户银行</th>
+            <th>客户</th>
+            <th>最近访问日期</th>
+            <th>利率</th>
+            <th>货币类型</th>
+        </tr>
+        {% for i in userlist_save %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td><a href="/delAcc?acoountID={{ i[0] }}">删除</a> | <a href="/changeAcc?ID={{ [i[0],i[3],i[5]] }}">更改</a></td>
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+            <td>{{ i[5] }}</td>
+            <td>{{ i[6] }}</td>
+            <td>{{ i[7] }}</td>
+            <td>{{ i[8] }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    <h2>支票账户信息列表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>操作</th>
+            <th>账户号(6位)</th>
+            <th>余额</th>
+            <th>开户日期</th>
+            <th>账户类型</th>
+            <th>开户银行</th>
+            <th>客户</th>
+            <th>最近访问日期</th>
+            <th>透支额</th>
+        </tr>
+        {% for i in userlist_check %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td><a href="/delAcc?acoountID={{ i[0] }}">删除账户</a> | <a href="/changeAcc?ID={{ [i[0],i[3],i[5]] }}">更改账户</a></td>
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+            <td>{{ i[5] }}</td>
+            <td>{{ i[6] }}</td>
+            <td>{{ i[7] }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    </center>
+
+  </body>
+</section>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="cn-zh">
+<title>客户查询</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<section class="content">
+  <header>
+    <h1 style="text-align:center;">客户查询</h1>
+  </header>
+  <body>
+    <center>
+    <h1>客户信息列表</h1>
+    <a href="/customerManage/">返回</a>
+    <hr>
+    <form action="/searchCustom/" method="post">
+        <h1>请输入想查找的客户的相关信息</h1>
+        <table>
+            <tr>
+                <td>身份证号:</td>
+                <td><input type="text" name="cusID"><br></td>
+            </tr>
+            <tr>
+                <td>姓名:</td>
+                <td><input type="text" name="cusname"><br></td>
+            </tr>
+            <tr>
+                <td>贷款负责人:</td>
+                <td><input type="text" name="loanres"><br></td>
+            </tr>
+            <tr>
+                <td>账户负责人:</td>
+                <td><input type="text" name="accres"><br></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" ,value="查询"></td>
+            </tr>
+        </table>
+    </form>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>操作</th>
+            <th>身份证号</th>
+            <th>姓名</th>
+            <th>联系电话</th>
+            <th>家庭住址</th>
+            <th>联系人手机号</th>
+            <th>联系人姓名</th>
+            <th>联系人Email</th>
+            <th>与客户关系</th>
+            <th>贷款负责人</th>
+            <th>账户负责人</th>
+        </tr>
+        {% for i in userlist %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td><a href="/del?cusID={{ i[0] }}">删除</a> | <a href="/changeCustom?cusID={{ i[0] }}">更改</a></td>
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+            <td>{{ i[5] }}</td>
+            <td>{{ i[6] }}</td>
+            <td>{{ i[7] }}</td>
+            <td>{{ i[8] }}</td>
+            <td>{{ i[9] }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    </center>
+
+  </body>
+</section>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<title>修改帐户所有者信息</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<section class="content">
+    <header>
+        <h1 style="text-align:center;">修改帐户所有者信息</h1>
+    </header>
+    <body>
+        <center>
+            <h1>更改需要更改的信息</h1>
+            <a href="/accountManage/">返回</a>
+            <hr>
+            <form action="/chasacccus/" method="post">
+                <table>
+                    {% for i in userlist %}
+                    <tr>
+                        <td>账户号:<input type="text" name="accountID" readonly="readonly" value="{{ i[0] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>客户:<input type="text" name="cusID" readonly="readonly" value="{{ i[1] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>最近访问时间:<input type="text" name="visit" value="{{ i[2] }}"><br></td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="2" align="center"><input type="submit" ,value="确定"></td>
+                    </tr>
+                </table>
+            </form>
+        </center>
+    </body>
+</section>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<title>添加帐户</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<section class="content">
+    <header>
+        <h1 style="text-align:center;">添加帐户</h1>
+    </header>
+    <body>
+    <center>
+        <a href="/accountManage/">返回</a>
+        <hr>
+        <form action="/addsacc/" method="post">
+            <h1>请输入添加的信息</h1>
+            <table>
+                <tr>
+                    <td>账户号*(6位):</td>
+                    <td><input type="text" name="accountID"><br></td>
+                </tr>
+                <tr>
+                    <td>余额*:</td>
+                    <td><input type="text" name="money"><br></td>
+                </tr>
+                <tr>
+                    <td>开户日期*:</td>
+                    <td><input type="text" name="settime"><br></td>
+                </tr>
+                <tr>
+                    <td>账户类型*:</td>
+                    <td><select name="accounttype">
+                        <option value ="save">save</option>
+                        <option value ="check">check</option>
+                    </select><br></td>
+                </tr>
+                <tr>
+                    <td>开户银行*:</td>
+                    <td><select name="bank">
+                        <option value ="Beijing branch">Beijing branch</option>
+                        <option value ="Shanghai branch">Shanghai branch</option>
+                        <option value="Hefei branch">Hefei branch</option>
+                    </select><br></td>
+                </tr>
+                <tr>
+                    <td>客户*:</td>
+                    <td><input type="text" name="cusID"><br></td>
+                </tr>
+                <tr>
+                    <td>利率(储蓄账户):</td>
+                    <td><input type="text" name="interestrate"><br></td>
+                </tr>
+                <tr>
+                    <td>货币类型(储蓄账户):</td>
+                    <td><select name="savetype">
+                        <option value ="1">1</option>
+                        <option value ="2">2</option>
+                        <option value ="3">3</option>
+                    </select><br></td>
+                </tr>
+                <tr>
+                    <td>透支额(支票账户):</td>
+                    <td><input type="text" name="overdraft"><br></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" ,value="确定"></td>
+                </tr>
+
+            </table>
+        </form>
+    </center>
+    </body>
+</section>
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<title>修改客户信息</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<section class="content">
+    <header>
+        <h1 style="text-align:center;">修改客户信息</h1>
+    </header>
+    <body>
+        <center>
+            <h1>更改需要更改的信息</h1>
+            <a href="/customerManage/">返回</a>
+            <hr>
+            <form action="/chas/" method="post">
+                <table>
+                    {% for i in userlist %}
+                    <tr>
+                        <td>身份证号:<input type="text" name="cusID" readonly="readonly" value="{{ i[0] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>姓名:<input type="text" name="cusname" value="{{ i[1]}}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>联系电话:<input type="text" name="cusphone" value="{{ i[2] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>家庭住址:<input type="text" name="address" value="{{ i[3] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>联系人手机号:<input type="text" name="contactphone" value="{{ i[4] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>联系人姓名:<input type="text" name="contactname" value="{{ i[5] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>联系人Email:<input type="text" name="contactemail" value="{{ i[6] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>与客户关系:<input type="text" name="relation" value="{{ i[7] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>贷款负责人:<input type="text" name="loanres" value="{{ i[8] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>账户负责人:<input type="text" name="accres" value="{{ i[9] }}"><br></td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="2" align="center"><input type="submit" ,value="确定"></td>
+                    </tr>
+                </table>
+            </form>
+        </center>
+    </body>
+</section>

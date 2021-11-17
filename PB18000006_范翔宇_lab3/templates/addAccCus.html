@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<title>添加所有者</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<section class="content">
+    <header>
+        <h1 style="text-align:center;">给该账户添加所有者</h1>
+    </header>
+    <body>
+    <center>
+        <a href="/accountManage/">返回</a>
+        <hr>
+        <form action="/addsacccus/" method="post">
+            <h1>请输入添加的信息</h1>
+            <table>
+                <tr>
+                    <td>账户号:</td>
+                    <td><input type="text" name="accountID" readonly="readonly" value="{{ userlist }}"><br></td>
+                </tr>
+                <tr>
+                    <td>客户:</td>
+                    <td><input type="text" name="cusID"><br></td>
+                </tr>
+                <tr>
+                    <td>最近访问日期:</td>
+                    <td><input type="text" name="visit"><br></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" ,value="确定"></td>
+                </tr>
+
+            </table>
+        </form>
+    </center>
+    </body>
+</section>
+

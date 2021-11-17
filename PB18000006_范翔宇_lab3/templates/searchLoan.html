@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="cn-zh">
+<title>贷款信息查询</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<section class="content">
+  <header>
+    <h1 style="text-align:center;">贷款信息查询</h1>
+  </header>
+  <body>
+    <center>
+    <h1>贷款信息列表</h1>
+    <a href="/loanManage/">返回</a>
+    <hr>
+    <form action="/searchLoan/" method="post">
+        <h1>请输入想查找的贷款的相关信息</h1>
+        <table>
+            <tr>
+                <td>贷款号:</td>
+                <td><input type="text" name="loanID"><br></td>
+            </tr>
+            <tr>
+                <td>贷款分行:</td>
+                <td><select name="bank">
+                    <option value="">all</option>
+                    <option value ="Beijing branch">Beijing branch</option>
+                    <option value ="Shanghai branch">Shanghai branch</option>
+                    <option value="Hefei branch">Hefei branch</option>
+                </select><br></td>
+            </tr>
+            <tr>
+                <td>当前状态:</td>
+                <td><select name="state">
+                    <option value="">未选择</option>
+                    <option value ="0">未开始发放</option>
+                    <option value ="1">发放中</option>
+                    <option value="2">已全部发放</option>
+                </select><br></td>
+            </tr>
+            <tr>
+                <td>贷款所有者:</td>
+                <td><input type="text" name="cusID"><br></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" ,value="查询"></td>
+            </tr>
+        </table>
+    </form>
+    <h2>贷款信息列表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>操作</th>
+            <th>贷款号(4位)</th>
+            <th>所贷金额</th>
+            <th>分支机构</th>
+            <th>当前状态</th>
+        </tr>
+        {% for i in userlist_loan %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td><a href="/delloan?ID={{ i[0] }}">删除贷款</a></td>
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>贷款所有者信息列表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>贷款号(4位)</th>
+            <th>所有者</th>
+        </tr>
+        {% for i in userlist_cus %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>发放信息列表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>贷款号(4位)</th>
+            <th>发放对象</th>
+            <th>发放金额</th>
+            <th>发放日期</th>
+        </tr>
+        {% for i in userlist_pay %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </center>
+
+  </body>
+</section>
+</html>

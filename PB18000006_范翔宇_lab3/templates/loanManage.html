@@ -1,0 +1,71 @@
+<!doctype html>
+<title>贷款管理</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<section class="content">
+  <header>
+    <h1 style="text-align:center;">贷款管理</h1>
+  </header>
+  <body>
+    <center>
+    <a href="/home">返回首页</a>
+    <hr>
+    <a href="/searchLoan/">查询贷款信息</a>
+    <hr>
+    <a href="/addLoan/">新增贷款</a>
+    <hr>
+    <a href="/addPay/">发放贷款</a>
+    <hr>
+    <h2>贷款信息列表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>操作</th>
+            <th>贷款号(4位)</th>
+            <th>所贷金额</th>
+            <th>分支机构</th>
+            <th>当前状态</th>
+        </tr>
+        {% for i in userlist_loan %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td><a href="/delloan?ID={{ i[0] }}">删除贷款</a></td>
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>贷款所有者信息列表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>贷款号(4位)</th>
+            <th>所有者</th>
+        </tr>
+        {% for i in userlist_cus %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>发放信息列表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>贷款号(4位)</th>
+            <th>发放对象</th>
+            <th>发放金额</th>
+            <th>发放日期</th>
+        </tr>
+        {% for i in userlist_pay %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </center>
+  </body>
+</section>

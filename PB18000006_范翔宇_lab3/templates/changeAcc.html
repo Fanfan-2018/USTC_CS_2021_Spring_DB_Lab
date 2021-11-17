@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<title>修改帐户信息</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<section class="content">
+    <header>
+        <h1 style="text-align:center;">修改帐户信息</h1>
+    </header>
+    <body>
+        <center>
+            <h1>更改需要更改的信息</h1>
+            <a href="/accountManage/">返回</a>
+            <hr>
+            <form action="/chasacc/" method="post">
+                <table>
+                    {% for i in userlist %}
+                    <tr>
+                        <td>账户号:<input type="text" name="accountID" readonly="readonly" value="{{ i[0] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>余额:<input type="text" name="money" value="{{ i[1]}}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>开户日期:<input type="text" name="settime" readonly="readonly" value="{{ i[2] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>账户类型:<input type="text" name="accounttype" readonly="readonly" value="{{ i[3] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>开户银行:<input type="text" name="bank" readonly="readonly" value="{{ i[4] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>利率:<input type="text" name="interestrate" value="{{ i[7] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>货币类型:<input type="text" name="savetype" value="{{ i[8] }}"><br></td>
+                    </tr>
+                    <tr>
+                        <td>透支额:<input type="text" name="overdraft" value="{{ i[9] }}"><br></td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="2" align="center"><input type="submit" ,value="确定"></td>
+                    </tr>
+                </table>
+            </form>
+            <h2>账户客户信息列表</h2>
+            <a href="/addAccCus?ID={{userlist[0][0]}}">增加账户所有者</a>
+            <hr>
+            <table border="1px" width="400px">
+                <tr style="text-align:center">
+                    <th>操作</th>
+                    <th>客户</th>
+                    <th>最近访问日期</th>
+                </tr>
+                {% for i in userlist_cus %}
+                <tr style="text-align:center" id = "sheetcus">
+                    <td><a href="/delacccus?ID={{[userlist[0][0],i[0]]}}">删除该所有者</a> | <a href="/chAccCus?ID={{[userlist[0][0],i[0]]}}">更改最近访问日期</a></td>
+                    <td>{{ i[0] }}</td>
+                    <td>{{ i[1] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </center>
+    </body>
+</section>

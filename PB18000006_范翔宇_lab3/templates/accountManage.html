@@ -1,0 +1,79 @@
+<!doctype html>
+<title>帐户管理</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<section class="content">
+  <header>
+    <h1 style="text-align:center;">帐户管理</h1>
+  </header>
+  <body>
+    <center>
+    <h1>账户信息列表</h1>
+    <a href="/home">返回首页</a>
+    <hr>
+    <a href="/searchAcc/">查询帐户</a>
+    <hr>
+    <a href="/addAcc/">添加帐户</a>
+    <hr>
+    <h2>储蓄账户信息列表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>操作</th>
+            <th>账户号(6位)</th>
+            <th>余额</th>
+            <th>开户日期</th>
+            <th>账户类型</th>
+            <th>开户银行</th>
+            <th>客户</th>
+            <th>最近访问日期</th>
+            <th>利率</th>
+            <th>货币类型</th>
+        </tr>
+        {% for i in userlist_save %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td><a href="/delacc?ID={{ i[0] }}">删除账户</a> | <a href="/changeAcc?ID={{ [i[0],i[3],i[5]] }}">更改账户</a></td>
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+            <td>{{ i[5] }}</td>
+            <td>{{ i[6] }}</td>
+            <td>{{ i[7] }}</td>
+            <td>{{ i[8] }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    <h2>支票账户信息列表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>操作</th>
+            <th>账户号(6位)</th>
+            <th>余额</th>
+            <th>开户日期</th>
+            <th>账户类型</th>
+            <th>开户银行</th>
+            <th>客户</th>
+            <th>最近访问日期</th>
+            <th>透支额</th>
+        </tr>
+        {% for i in userlist_check %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td><a href="/delacc?ID={{ i[0] }}">删除账户</a> | <a href="/changeAcc?ID={{ [i[0],i[3],i[5]] }}">更改账户</a></td>
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+            <td>{{ i[5] }}</td>
+            <td>{{ i[6] }}</td>
+            <td>{{ i[7] }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    </center>
+  </body>
+</section>

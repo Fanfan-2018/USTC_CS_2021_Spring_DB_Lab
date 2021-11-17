@@ -1,0 +1,18 @@
+<!doctype html>
+<title>银行业务管理系统</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<section class="content">
+  <header>
+    <h1 style="text-align:center;">银行业务管理系统</h1>
+  </header>
+
+  <form method="post">
+    <button type="customerManage" name="customerManage" value="customerManage" class = "homeBtn">客户管理</button>
+    <button type="accountManage" name="accountManage" value="accountManage" class = "homeBtn">账户管理</button>
+    <button type="loanManage" name="loanManage" value="loanManage" class = "homeBtn">贷款管理</button>
+    <button type="statistics" name="statistics" value="statistics" class = "homeBtn">业务统计</button>
+  </form>
+  
+</section>

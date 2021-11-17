@@ -1,0 +1,279 @@
+<!doctype html>
+<head>
+    <title>业务统计</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="./node_modules/chart.js/dist/chart.js" ></script>
+</head>
+
+<section class="content">
+  <header>
+    <h1 style="text-align:center;">业务统计</h1>
+  </header>
+  <body>
+    <center>
+    <a href="/home">返回首页</a>
+    <hr>
+    <a href="/chart/">曲线图</a>
+    <hr>
+    <form action="/statistics/" method="post">
+        <h1>请输入业务统计年份</h1>
+        <table>
+            <tr>
+                <td>年份:</td>
+                <td><input type="text" name="year"><br></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" ,value="提交"></td>
+            </tr>
+        </table>
+    </form>
+    <h2>储蓄业务年表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>分支机构</th>
+            <th>总金额</th>
+            <th>用户数</th>
+        </tr>
+        {% for i in sy %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>储蓄金额季度表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>分支机构</th>
+            <th>季度一</th>
+            <th>季度二</th>
+            <th>季度三</th>
+            <th>季度四</th>
+        </tr>
+        {% for i in ssm %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>储蓄客户季度表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>分支机构</th>
+            <th>季度一</th>
+            <th>季度二</th>
+            <th>季度三</th>
+            <th>季度四</th>
+        </tr>
+        {% for i in ssc %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>储蓄金额月表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>分支机构</th>
+            <th>一月</th>
+            <th>二月</th>
+            <th>三月</th>
+            <th>四月</th>
+            <th>五月</th>
+            <th>六月</th>
+            <th>七月</th>
+            <th>八月</th>
+            <th>九月</th>
+            <th>十月</th>
+            <th>十一月</th>
+            <th>十二月</th>
+        </tr>
+        {% for i in smm %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+            <td>{{ i[5] }}</td>
+            <td>{{ i[6] }}</td>
+            <td>{{ i[7] }}</td>
+            <td>{{ i[8] }}</td>
+            <td>{{ i[9] }}</td>
+            <td>{{ i[10] }}</td>
+            <td>{{ i[11] }}</td>
+            <td>{{ i[12] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>储蓄客户月表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>分支机构</th>
+            <th>一月</th>
+            <th>二月</th>
+            <th>三月</th>
+            <th>四月</th>
+            <th>五月</th>
+            <th>六月</th>
+            <th>七月</th>
+            <th>八月</th>
+            <th>九月</th>
+            <th>十月</th>
+            <th>十一月</th>
+            <th>十二月</th>
+        </tr>
+        {% for i in smc %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+            <td>{{ i[5] }}</td>
+            <td>{{ i[6] }}</td>
+            <td>{{ i[7] }}</td>
+            <td>{{ i[8] }}</td>
+            <td>{{ i[9] }}</td>
+            <td>{{ i[10] }}</td>
+            <td>{{ i[11] }}</td>
+            <td>{{ i[12] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>贷款业务年表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>分支机构</th>
+            <th>总金额</th>
+            <th>用户数</th>
+        </tr>
+        {% for i in ly %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>贷款金额季度表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>分支机构</th>
+            <th>季度一</th>
+            <th>季度二</th>
+            <th>季度三</th>
+            <th>季度四</th>
+        </tr>
+        {% for i in lsm %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>贷款客户季度表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>分支机构</th>
+            <th>季度一</th>
+            <th>季度二</th>
+            <th>季度三</th>
+            <th>季度四</th>
+        </tr>
+        {% for i in lsc %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>贷款金额月表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>分支机构</th>
+            <th>一月</th>
+            <th>二月</th>
+            <th>三月</th>
+            <th>四月</th>
+            <th>五月</th>
+            <th>六月</th>
+            <th>七月</th>
+            <th>八月</th>
+            <th>九月</th>
+            <th>十月</th>
+            <th>十一月</th>
+            <th>十二月</th>
+        </tr>
+        {% for i in lmm %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+            <td>{{ i[5] }}</td>
+            <td>{{ i[6] }}</td>
+            <td>{{ i[7] }}</td>
+            <td>{{ i[8] }}</td>
+            <td>{{ i[9] }}</td>
+            <td>{{ i[10] }}</td>
+            <td>{{ i[11] }}</td>
+            <td>{{ i[12] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>贷款客户月表</h2>
+    <table border="1px" width="400px">
+        <tr style="text-align:center">
+            <th>分支机构</th>
+            <th>一月</th>
+            <th>二月</th>
+            <th>三月</th>
+            <th>四月</th>
+            <th>五月</th>
+            <th>六月</th>
+            <th>七月</th>
+            <th>八月</th>
+            <th>九月</th>
+            <th>十月</th>
+            <th>十一月</th>
+            <th>十二月</th>
+        </tr>
+        {% for i in lmc %}
+        <tr style="text-align:center" id = "sheetcus">
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+            <td>{{ i[5] }}</td>
+            <td>{{ i[6] }}</td>
+            <td>{{ i[7] }}</td>
+            <td>{{ i[8] }}</td>
+            <td>{{ i[9] }}</td>
+            <td>{{ i[10] }}</td>
+            <td>{{ i[11] }}</td>
+            <td>{{ i[12] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    </center>
+  </body>
+</section>

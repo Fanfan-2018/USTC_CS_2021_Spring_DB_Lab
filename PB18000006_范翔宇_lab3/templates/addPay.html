@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<title>发放贷款</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<section class="content">
+    <header>
+        <h1 style="text-align:center;">发放贷款</h1>
+    </header>
+    <body>
+    <center>
+        <a href="/loanManage/">返回</a>
+        <hr>
+        <form action="/addspay/" method="post">
+            <h1>请输入添加的信息</h1>
+            <table>
+                <tr>
+                    <td>贷款号(4位):</td>
+                    <td><input type="text" name="loanID"><br></td>
+                </tr>
+                <tr>
+                    <td>发放对象:</td>
+                    <td><input type="text" name="cusID"><br></td>
+                </tr>
+                <tr>
+                    <td>发放金额:</td>
+                    <td><input type="text" name="money"><br></td>
+                </tr>
+                <tr>
+                    <td>发放时间:</td>
+                    <td><input type="text" name="paytime"><br></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" ,value="确定"></td>
+                </tr>
+
+            </table>
+        </form>
+    </center>
+    </body>
+</section>
+
